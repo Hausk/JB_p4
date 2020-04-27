@@ -1,0 +1,386 @@
+body {
+    margin: 0 auto;
+    font-family: 'Baloo Bhaina 2', cursive;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+.red {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+}
+/* Navbar */
+#navbar {
+    padding: 25px;
+    background-color: #10ac84;
+    justify-content: space-around;
+    text-align: center;
+    height: 50px;
+}
+a #navbar{
+     float: right;
+     color: #10ac84;
+     font-size: 16px;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+}
+.subnav {
+    cursor: pointer;
+      float: right;
+      overflow: hidden;
+}
+.subnav .subnavbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.subnav:hover .subnavbtn {
+    background-color: white;
+    color: #10ac84;
+    border-radius: 5px 5px 0 0;
+}
+
+.subnav-content {
+    float: right;
+    color: #10ac84;
+    font-size: 14px;
+    text-align: center;
+    padding: 1px 1px;
+    text-decoration: none;
+    display: none;
+    right: 0;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    border-radius: 10px;
+    border-bottom: 1px solid #10ac84;
+    border-left: 1px solid #10ac84;
+    border-right: 1px solid #10ac84;
+}
+
+.subnav-content a {
+    float: left;
+    padding: 10px 20px;
+    color: #10ac84;
+    text-decoration: none;
+}
+
+.subnav-content a:hover {
+    color: black;
+}
+
+.subnav:hover .subnav-content {
+    display: block;
+}
+.page_title {
+    position: absolute;
+    font-size: 24px;
+    color: #FFFFFF;
+    left: 20px;
+    top: 10px;
+}
+
+/* Profil page */
+.change_password {
+    text-align: center;
+}
+.password_word {
+    width: 20%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid #10ac84;
+    -webkit-transition: 0.5s;
+    text-align: center;
+    font-size: 1.2em;
+    transition: 0.5s;
+}
+.password_changer {
+    margin-top: 15px;
+    background-color: #10ac84;
+    padding: 10px 20px;
+    border: 1px solid #10ac84;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.password_changer:hover {
+    background-color: white;
+}
+#infos {
+    text-align: center;
+    font-size: 20px;
+}
+#tickets {
+    float: left;
+    padding-left: 30px;
+}
+.title_About {
+    margin-top: -50px;
+    text-align: center;
+    background-color: #10ac84;
+    color: white;
+}
+aside {
+    position: absolute;
+    right: 0;
+    width: 25%;
+    float: right;
+    padding-right: 50px;
+}
+aside img {
+    width: 100%;
+    border-radius: 5%;
+    height: auto;
+}
+aside p, #About_name {
+    text-align: center;
+}
+.login_content {
+    text-align: center;
+    width: 30%;
+    margin: 50px auto;
+}
+.fieldset_comment {
+    width: 50%;
+    margin: auto;
+}
+.login_submit {
+    z-index: 2;
+    margin-top: 15px;
+    padding: 5px 15px;
+    background-color: #10ac84;
+    border: 1px solid #10ac84;
+    color: #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login_submit:hover {
+    background-color: #FFFFFF;
+    color: #10ac84;
+}
+#acceuil {
+    color: white;
+    float: right;
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+#acceuil:hover {
+    color: black;
+}
+#tickets {
+    width: 60%;
+    padding-bottom: 30px;
+}
+fieldset {
+    border: 2px solid #10ac84;
+    border-radius: 10px;
+}
+legend {
+    color: #10ac84;
+    text-align: center;
+    font-size: 22px;
+    margin: auto;
+}
+.content_tickets {
+    font-size: 18px;
+}
+.footer_fieldset {
+    border-top: 1px dashed #10ac84;
+    justify-content: space-between;
+    display: flex;
+}
+.read_more {
+    border-radius: 5px;
+    color: white;
+    margin: auto 0;
+    padding: 2px 10px;
+    background-color: #10ac84;
+    border: 1px solid #10ac84;
+}
+.read_more:hover {
+    color: #10ac84;
+    background-color: white;
+    border: 1px solid #10ac84;
+}
+
+#input_submitcoms {
+    padding: 5px 20px;
+    background: #10ac84;
+    border: 1px solid #10ac84;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#input_submitcoms:hover {
+    color: #10ac84;
+    background-color: #FFFFFF;
+}
+.signale_comment, .delete_comment {
+    color: #10ac84;
+}
+.separator_admin {
+    font-size: 22px;
+    color: #10ac84;
+    text-align: center;
+}
+.single_ticket {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+}
+.date_single{
+    text-align: right;
+    margin-right: 50px;
+}
+.modif_btn {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: white;
+}
+.modif_btn:hover {
+    color: black;
+}
+.caps_coms {
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: auto;
+    width: 80%;
+    margin-top: 50px;
+}
+@keyframes slidein {
+     from {
+         margin-top: 100%;
+         width: 100%;
+     }
+
+     to {
+         margin-top: 0;
+         width: 100%;
+     }
+ }
+#comment_post {
+    margin: 20px;
+    border: 1px solid #10ac84;
+    border-radius: 5px;
+    height: 80px;
+    width: 50%;
+}
+#comments {
+    text-align: center;
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+table {
+    margin: auto;
+    width: 95%;
+    text-align: center;
+}
+.content_table {
+    border: 5px solid black;
+}
+td {
+    grid-template-columns: fit-content(300px) fit-content(300px) 1fr;
+    width: 15%;
+}
+.head_table {
+    width: 100%;
+    margin: auto 0;
+    background-color: #10ac84;
+}
+.td_content {
+    width: 30%;
+    text-align: left;
+}
+.actions_td a, .title_td a {
+    color: #10ac84;
+}
+
+#profile_content {
+    text-align: center;
+}
+#profile_content h3 {
+    color: #10ac84;
+}
+#profile_content fieldset {
+    margin: auto;
+    width: 60%;
+}
+.separator_profile_2 {
+    margin-left: 50px;
+}
+.separator_profile_1 {
+    margin-right: 50px;
+}
+.form_ticket{
+    text-align: center;
+}
+.title_ticket {
+    font-size: 20px;
+}
+.tox-tinymce{
+    width: 90%;
+    margin: auto;
+}
+.title_input {
+    width: 50%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid #10ac84;
+    -webkit-transition: 0.5s;
+    text-align: center;
+    font-size: 1.2em;
+    transition: 0.5s;
+}
+input[type=text]:focus {
+    border: 2px solid #1dd1a1;
+}
+
+.submit_add_ticket {
+    background-color: #10ac84;
+    border: 1px solid  #10ac84;
+    border-radius: 15px;
+    padding: 10px 100px;
+    color: white;
+    cursor: pointer;
+}
+.submit_add_ticket:hover {
+    background: #FFF;
+    color: #10ac84;
+}
+@media all and (max-width: 768px) {
+    .login_content {
+        width: 50%;
+    }
+    #profile_content {
+        font-size: 16px;
+    }
+    #profile_content fieldset {
+        width: 70%;
+        padding-bottom: 15px;
+    }
+    .separator_profile_1 {
+        margin: inherit;
+    }
+    aside {
+        display: none;
+    }
+    #tickets {
+        width: 90%;
+    }
+}
