@@ -13,6 +13,7 @@ class UserDAO extends DAO
         $user->setId($row['id']);
         $user->setPseudo($row['pseudo']);
         $user->setCreatedAt($row['createdAt']);
+        $user->setPassword($row['hash']);
         $user->setRole($row['name']);
         return $user;
     }
@@ -30,39 +31,45 @@ class UserDAO extends DAO
         return $users;
     }
 
-    public function register(Parameter $post)
+    public function register($pseudo, $password)
     {
-        $this->checkUser($post);
         $sql = 'INSERT INTO user (pseudo, password, createdAt, role_id) VALUES (?, ?, NOW(), ?)';
-        $this->createQuery($sql, [$post->get('pseudo'), password_hash($post->get('password'), PASSWORD_BCRYPT), 2]);
+        $this->createQuery($sql, [$pseudo, $password, 2]);
     }
 
-    public function checkUser(Parameter $post)
+    public function checkUser($pseudo)
     {
         $sql = 'SELECT COUNT(pseudo) FROM user WHERE pseudo = ?';
-        $result = $this->createQuery($sql, [$post->get('pseudo')]);
+        $result = $this->createQuery($sql, [$pseudo]);
         $isUnique = $result->fetchColumn();
         if($isUnique) {
             return '<p>Le pseudo existe déjà</p>';
         }
     }
 
-    public function login(Parameter $post)
+    public function checkPassword($login)
+    {
+        $sql = 'SELECT password FROM user WHERE pseudo = ?';
+        $data = $this->createQuery($sql, [$login]);
+        $result = $data->fetch();
+        return $result;
+    }
+
+    public function login($login)
     {
         $sql = 'SELECT user.id, user.role_id, user.password, role.name FROM user INNER JOIN role ON role.id = user.role_id WHERE pseudo = ?';
-        $data = $this->createQuery($sql, [$post->get('pseudo')]);
+        $data = $this->createQuery($sql, [$login]);
         $result = $data->fetch();
-        $isPasswordValid = password_verify($post->get('password'), $result['password']);
         return [
-            'result' => $result,
-            'isPasswordValid' => $isPasswordValid
+            'result' => $result
         ];
     }
 
-    public function updatePassword(Parameter $post, $pseudo)
+
+    public function updatePassword($password, $pseudo)
     {
         $sql = 'UPDATE user SET password = ? WHERE pseudo = ?';
-        $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $pseudo]);
+        $this->createQuery($sql, [$password, $pseudo]);
     }
 
     public function deleteAccount($pseudo)

@@ -75,7 +75,6 @@ class Router
                 elseif($route === 'administration'){
                     $this->backController->administration();
                 }
-
                 else{
                     $this->errorController->errorNotFound();
                 }

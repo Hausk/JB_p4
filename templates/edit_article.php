@@ -1,10 +1,10 @@
 <?php 
-$this->title = "Modifier l'article";
+$this->title = "Modifier le billet";
 
 $route = isset($post) && $post->get('id') ? 'editArticle&articleId='.$post->get('id') : 'addArticle';
 $submit = $route === 'addArticle' ? 'Poster' : 'Valider';
 ?>
-
+<h2 class="page_title">Edition d'un billet</h2>
 <form class="form_ticket" method="post" action="../public/index.php?route=<?= $route; ?>">
     <label class="title_ticket" for="title"><strong>Titre</strong></label><br>
     <input class="title_input" type="text" id="title" name="title" value="<?= isset($post) ? htmlspecialchars($post->get('title')): ''; ?>"><br>

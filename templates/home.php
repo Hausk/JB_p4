@@ -1,6 +1,6 @@
 <?php $this->title = 'Billet simple pour l\'Alaska: Jean Forterohe vous en parle'; ?>
 <?php $this->desc = 'Page home description'; ?>
-<h2 class="page_title">Acceuil</h2>
+<h2 class="page_title">Accueil</h2>
 <div id="infos"><h3>Billet simple pour l'Alaska</h3></div>
 <?= $this->session->show('add_article'); ?>
 <?= $this->session->show('edit_article'); ?>

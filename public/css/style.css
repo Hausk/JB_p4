@@ -194,6 +194,14 @@ legend {
     font-size: 22px;
     margin: auto;
 }
+.notif {
+    position: absolute;
+    top: 4.5%;
+    color: white;
+    display: flex;
+    margin-left: 45%;
+    font-size: 18px;
+}
 .content_tickets {
     font-size: 18px;
 }
@@ -321,9 +329,11 @@ td {
 }
 .separator_profile_2 {
     margin-left: 50px;
+    color: red;
 }
 .separator_profile_1 {
     margin-right: 50px;
+    color: black;
 }
 .form_ticket{
     text-align: center;

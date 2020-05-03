@@ -2,7 +2,7 @@
 
 namespace App\src\controller;
 
-use App\config\Parameter;
+use App\Config\Parameter;
 
 class FrontController extends Controller
 {
@@ -30,7 +30,7 @@ class FrontController extends Controller
             $errors = $this->validation->validate($post, 'Comment');
             if(!$errors) {
                 $this->commentDAO->addComment($post, $articleId);
-                $this->session->set('add_comment', '');
+                $this->session->set('add_comment', '<span class="notif">Commentaire ajouté</span>');
                 header('Location: ../public/index.php');
             }
             $article = $this->articleDAO->getArticle($articleId);
@@ -44,10 +44,13 @@ class FrontController extends Controller
         }
     }
 
+    public function test($testID)
+    {
+        header('Location: ../public/index.php');
+    }
     public function flagComment($commentId)
     {
         $this->commentDAO->flagComment($commentId);
-        $this->session->set('flag_comment');
         header('Location: ../public/index.php');
     }
 
@@ -55,12 +58,12 @@ class FrontController extends Controller
     {
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'User');
-            if($this->userDAO->checkUser($post)) {
-                $errors['pseudo'] = $this->userDAO->checkUser($post);
+            if($checkPseu = $this->userDAO->checkUser($post->get('pseudo'))) {
+                $errors['pseudo'] = $checkPseu;
             }
             if(!$errors) {
-                $this->userDAO->register($post);
-                $this->session->set('register', '');
+                $this->userDAO->register($post->get('pseudo'), password_hash($post->get('password'), PASSWORD_BCRYPT));
+                $this->session->set('register', '<span class="notif">Votre compte a été crée</span');
                 header('Location: ../public/index.php');
             }
             return $this->view->render('register', [
@@ -74,17 +77,29 @@ class FrontController extends Controller
 
     public function login(Parameter $post)
     {
-        if($post->get('submit')) {
-            $result = $this->userDAO->login($post);
-            if($result && $result['isPasswordValid']) {
-                $this->session->set('login', '');
-                $this->session->set('id', $result['result']['id']);
-                $this->session->set('role', $result['result']['name']);
-                $this->session->set('pseudo', $post->get('pseudo'));
-                header('Location: ../public/index.php');
+        if($post->get('submit'))
+        {
+            $hash = $this->userDAO->checkPassword($post->get('pseudo'));
+            if($hash === false)
+            {
+                $this->session->set('error_login', '<p class="red">Le pseudo est incorrect</p>');
+                return $this->view->render('login', [
+                    'post'=> $post
+                ]);
+            }
+            if(password_verify($post->get('password'), ['password']))
+            {
+                $result = $this->userDAO->login($post->get('pseudo'));
+                if($result) {
+                    $this->session->set('login', '<span class="notif">Vous êtes connecté</span>');
+                    $this->session->set('id', $result['result']['id']);
+                    $this->session->set('role', $result['result']['name']);
+                    $this->session->set('pseudo', $post->get('pseudo'));
+                    header('Location: ../public/index.php');
+                }
             }
             else {
-                $this->session->set('error_login', '<p class="red">Le pseudo ou le mot de passe est incorrect</p>');
+                $this->session->set('error_login', '<p class="red">Le mot de passe est incorrect</p>');
                 return $this->view->render('login', [
                     'post'=> $post
                 ]);

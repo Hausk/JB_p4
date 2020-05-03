@@ -9,7 +9,7 @@ use App\src\DAO\ArticleDAO;
 use App\src\DAO\CommentDAO;
 use App\config\View;
 
-abstract class Controller {
+abstract class Controller{
 
     protected $userDAO;
     protected $articleDAO;

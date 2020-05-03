@@ -49,8 +49,8 @@ class UserValidation extends Validation
         if($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('pseudo', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 255)) {
-            return $this->constraint->maxLength('pseudo', $value, 255);
+        if($this->constraint->maxLength($name, $value, 16)) {
+            return $this->constraint->maxLength('pseudo', $value, 16);
         }
     }
 

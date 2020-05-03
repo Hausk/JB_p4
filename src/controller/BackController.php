@@ -143,6 +143,7 @@ class BackController extends Controller
         {
             $this->userDAO->deleteAccount($this->session->get('pseudo'));
             $this->logoutOrDelete('delete_account');
+            $this->session->set('delete_account', '<span class="notif">Votre compte a été supprimé</span>');
         }
     }
 
@@ -159,7 +160,7 @@ class BackController extends Controller
         $this->session->stop();
         $this->session->start();
         if($param === 'logout') {
-            $this->session->set($param, '');
+            $this->session->set($param, '<span class="notif">Vous avez été déconnecté</span>');
         } else {
         }
         header('Location: ../public/index.php');
